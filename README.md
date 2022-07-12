@@ -32,7 +32,9 @@ az ad sp create-for-rbac --name sp_tf_ghaction --role Contributor --scopes /subs
 Bicep consists of simplified declarative languages that can be transfiled with ARM tamplate. 
 
 > Under bicep directory, there is sample bicep file to deploy Storage Account to "Lab" resource group. 
+> 
 > You can modify the resource group and storage account prefix on the main.bicep
+> 
 > When there is any update on **bicep** directory, Github Action workflow (**.github/workflows/bicep_whatif.yml**) will run to check the execution plan. 
 
 ##### bicep command
