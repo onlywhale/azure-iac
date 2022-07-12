@@ -84,7 +84,7 @@ echo "storage_account_name: $STORAGE_ACCOUNT_NAME"
 echo "container_name: $CONTAINER_NAME"
 ```
 
-#### Create a terraform block in `backend.tf` to include the backend configuration 
+#### Create a terraform block in `providers.tf` to include the backend configuration 
 > terrform configuration on the repository
 > From `contoso/main.tf`, add the following to begining of the file and fill it with your storage account details.
 

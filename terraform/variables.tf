@@ -1,6 +1,8 @@
-variable "rg_name" {
-  type = string
-  default = "contoso_rg"
+# variables.tf
+
+variable prefix {
+    type = string
+    default = "contoso"
 }
 
 variable region {
@@ -8,3 +10,6 @@ variable region {
     default = "UK South"
 }
 
+variable tags {
+    type = map
+}
