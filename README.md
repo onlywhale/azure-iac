@@ -54,9 +54,10 @@ az bicep decompile --file {json_template_file}
 ![bicep sample](images/bicepsample.jpg)
 
 ### Terraform 
-> Under terraform directory, there is sample bicep file to deploy Storage Account to "Lab" resource group. 
-> You can modify the resource group and storage account prefix on the main.bicep
+> Under terraform directory, there is sample terraform configuration files. 
+> 
 > When there is any update on **terraform** directory, Github Action workflow (**.github/workflows/terraform_play.yml**) will run to check the execution plan. 
+> 
 > **.github/workflows/terraform_apply.yml** will run manually.
 
 #### Create a storage account and a blob container to hold the state file
