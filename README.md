@@ -34,9 +34,14 @@ Bicep is the Azure-native infrastructure-as-code language.
 Bicep consists of simplified declarative languages that can be transfiled with ARM tamplate. 
 
 ##### bicep command
-az bicep install // install bicep
-az bicep build --file {bicep_file} --outfile {out_file} // you will get json format output file
-az bicep decompile --file {json_template_file} // you can get bicep file through arm template
+```
+### install bicep
+az bicep install 
+### you will get json format output file
+az bicep build --file {bicep_file} --outfile {out_file} 
+### you can get bicep file through arm template
+az bicep decompile --file {json_template_file} 
+```
 
 ##### bicep format 
 ![bicep format](images/bicepformat.jpg)
@@ -71,7 +76,7 @@ echo "container_name: $CONTAINER_NAME"
 > terrform configuration on the repository
 > From `contoso/main.tf`, add the following to begining of the file and fill it with your storage account details.
 
-```terraform
+```
 terraform {
   backend "azurerm" {
     resource_group_name   = "tfstate"
@@ -87,27 +92,4 @@ terraform {
   }
 }
 ```
-
-#### Create Azure Service Principal
-```
-#### Create Service Principal 
-az ad sp create-for-rbac --name sp_tf_ghaction 
-
-#### or Create Service Principal with the contributor role on subscription level
-az ad sp create-for-rbac --name sp_tf_ghaction --role Contributor --scopes /subscriptions/{subscriptionId}
-```
-
-#### Saving Service Principal credentials within GitHub Repository as secrets
->  Add 3 secrets on Github under repository > "Settings" > "secret" > "Actions"
-  ```
-  AZURE_AD_CLIENT_ID – Will be the service principal ID from above
-  AZURE_AD_CLIENT_SECRET – The secret that was created as part of the Azure Service Principal
-  AZURE_AD_TENANT_ID – The Azure AD tenant ID to where the service principal was created
-  AZURE_SUBSCRIPTION_ID – Subscription ID of where you want to deploy the Terraform
-  ```
-
-
-
-
-
 
