@@ -8,6 +8,7 @@ Github Actions workflows to provision Azure resources with infrastructure as cod
 Under .github/workflows/, there are sample workflows for bicep and terraform
 
 To provision Azure resources through github actions, you need service principal and set it on the Github Secrets. 
+
 ##### Create Azure Service Principal
 ```
 #### Create Service Principal 
@@ -19,26 +20,29 @@ az ad sp create-for-rbac --name sp_tf_ghaction --role Contributor --scopes /subs
 
 ##### Saving Service Principal credentials within GitHub Repository as secrets
 >  Add 3 secrets on Github under repository > "Settings" > "secret" > "Actions"
-  ```
+```
   AZURE_AD_CLIENT_ID – Will be the service principal ID from above
   AZURE_AD_CLIENT_SECRET – The secret that was created as part of the Azure Service Principal
   AZURE_AD_TENANT_ID – The Azure AD tenant ID to where the service principal was created
   AZURE_SUBSCRIPTION_ID – Subscription ID of where you want to deploy the Terraform
-  ```
-
-
-
+```
 
 ### Bicep
-Bicep is the Azure-native infrastructure-as-code language. 
+**Bicep** is the Azure-native infrastructure-as-code language. 
 Bicep consists of simplified declarative languages that can be transfiled with ARM tamplate. 
+
+> Under bicep directory, there is sample bicep file to deploy Storage Account to "Lab" resource group. 
+> You can modify the resource group and storage account prefix on the main.bicep
+> When there is any update on **bicep** directory, Github Action workflow (**.github/workflows/bicep_whatif.yml**) will run to check the execution plan. 
 
 ##### bicep command
 ```
 ### install bicep
 az bicep install 
+
 ### you will get json format output file
 az bicep build --file {bicep_file} --outfile {out_file} 
+
 ### you can get bicep file through arm template
 az bicep decompile --file {json_template_file} 
 ```
@@ -48,6 +52,11 @@ az bicep decompile --file {json_template_file}
 ![bicep sample](images/bicepsample.jpg)
 
 ### Terraform 
+> Under terraform directory, there is sample bicep file to deploy Storage Account to "Lab" resource group. 
+> You can modify the resource group and storage account prefix on the main.bicep
+> When there is any update on **terraform** directory, Github Action workflow (**.github/workflows/terraform_play.yml**) will run to check the execution plan. 
+> **.github/workflows/terraform_apply.yml** will run manually.
+
 #### Create a storage account and a blob container to hold the state file
 > Use below script to create a Azure storage account (or see azure docs)
 
