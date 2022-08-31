@@ -1,4 +1,4 @@
-name: Bicep What-If
+name: Bicep Create
 
 on: workflow_dispatch
 
