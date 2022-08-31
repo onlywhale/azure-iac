@@ -1,9 +1,6 @@
 name: Bicep What-If
 
-on:
-  push:
-    paths:
-      - 'bicep/**'
+on: workflow_dispatch
 
 env:
   bicep_rg: Lab
