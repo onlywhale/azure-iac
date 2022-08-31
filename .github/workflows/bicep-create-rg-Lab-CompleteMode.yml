@@ -1,0 +1,37 @@
+name: Bicep What-If
+
+on:
+  push:
+    paths:
+      - 'bicep/**'
+
+env:
+  bicep_rg: Lab
+
+jobs:
+  bicep:
+    runs-on: ubuntu-latest
+
+    env:
+      ARM_CLIENT_ID: ${{ secrets.AZURE_AD_CLIENT_ID }}
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_AD_CLIENT_SECRET }}
+      ARM_SUBSCRIPTION_ID: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      ARM_TENANT_ID: ${{ secrets.AZURE_AD_TENANT_ID }}
+
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+      - uses: actions/checkout@v2
+        
+      - uses: Azure/login@v1
+        with:
+          creds: '{"clientId":"${{ secrets.AZURE_AD_CLIENT_ID }}","clientSecret":"${{ secrets.AZURE_AD_CLIENT_SECRET }}","subscriptionId":"${{ secrets.AZURE_SUBSCRIPTION_ID }}","tenantId":"${{ secrets.AZURE_AD_TENANT_ID }}"}'
+
+      - name: run bicep create
+        run: |
+          cd bicep
+          az deployment group create -f ./main.bicep -g ${{ env.bicep_rg }} --name deployment-bicep
+      
+      - name: Azure Logout
+        run: |
+          az logout
+
