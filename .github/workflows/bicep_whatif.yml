@@ -30,4 +30,8 @@ jobs:
         run: |
           cd bicep
           az deployment group what-if -f ./main.bicep -g ${{ env.bicep_rg }}
+      
+      - name: Azure Logout
+        run: |
+          az logout
 
