@@ -29,7 +29,7 @@ jobs:
       - name: run bicep create
         run: |
           cd bicep
-          az deployment group create -f ./main.bicep -g ${{ env.bicep_rg }} --name deployment-bicep
+          az deployment group create -f ./main.bicep -g ${{ env.bicep_rg }} --name deployment-bicep --mode Complete
       
       - name: Azure Logout
         run: |
