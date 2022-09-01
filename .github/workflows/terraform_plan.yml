@@ -25,21 +25,21 @@ jobs:
 
       - name: Terraform Init
         run: | 
-          cd Workflow
+          cd terraform
           terraform init
 
       - name: Terraform Format
         run: | 
-          cd Workflow
+          cd terraform
           terraform fmt -check
         continue-on-error: true
 
       - name: Terraform Plan
         run: | 
-          cd Workflow
+          cd terraform
           terraform plan -no-color
 
       - name: Terraform Validate
         run: | 
-          cd Workflow
+          cd terraform
           terraform validate -no-color
