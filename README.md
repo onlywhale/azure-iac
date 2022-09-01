@@ -12,10 +12,10 @@ To provision Azure resources through github actions, you need service principal 
 ##### Create Azure Service Principal
 ```
 #### Create Service Principal 
-az ad sp create-for-rbac --name sp_tf_ghaction 
+az ad sp create-for-rbac --name sp_tf_ghaction --sdk-auth
 
 #### or Create Service Principal with the contributor role on subscription level
-az ad sp create-for-rbac --name sp_tf_ghaction --role Contributor --scopes /subscriptions/{subscriptionId}
+az ad sp create-for-rbac --name sp_tf_ghaction --role Contributor --scopes /subscriptions/{subscriptionId} --sdk-auth
 ```
 
 ##### Saving Service Principal credentials within GitHub Repository as secrets
@@ -25,6 +25,7 @@ az ad sp create-for-rbac --name sp_tf_ghaction --role Contributor --scopes /subs
   AZURE_AD_CLIENT_SECRET – The secret that was created as part of the Azure Service Principal
   AZURE_AD_TENANT_ID – The Azure AD tenant ID to where the service principal was created
   AZURE_SUBSCRIPTION_ID – Subscription ID of where you want to deploy the Terraform
+  AZURE_CREDENTIALS - Paste the whole output of JSON format
 ```
 
 ### Bicep
