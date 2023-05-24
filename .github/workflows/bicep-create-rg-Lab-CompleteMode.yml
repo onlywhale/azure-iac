@@ -3,7 +3,7 @@ name: Bicep Create
 on: workflow_dispatch
 
 env:
-  bicep_rg: Lab
+  bicep_rg: bicep-rg
 
 jobs:
   bicep:
