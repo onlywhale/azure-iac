@@ -20,10 +20,6 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
           
-      - name: check 
-        run: |
-          az account show
-          
       - name: run bicep whatif
         run: |
           cd bicep
