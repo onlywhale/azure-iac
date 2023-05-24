@@ -4,4 +4,3 @@ resource "azurerm_resource_group" "contoso_rg" {
   location = var.region
   tags     = var.tags
 }
-
