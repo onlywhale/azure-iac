@@ -1,3 +1,4 @@
+
 param storagePrefix string = 'testservice' 
 param location string = resourceGroup().location
 
