@@ -6,7 +6,7 @@ on:
       - 'bicep/**'
 
 env:
-  bicep_rg: Lab
+  bicep_rg: bicep-rg
 
 jobs:
   bicep:
