@@ -15,13 +15,14 @@ jobs:
     steps:
     # Checkout the repository to the GitHub Actions runner
       - uses: actions/checkout@v2  
-      - name: check 
-        run: |
-          az account show
       
       - uses: Azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: check 
+        run: |
+          az account show
           
       - name: run bicep whatif
         run: |
